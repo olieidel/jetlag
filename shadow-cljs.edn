@@ -1,0 +1,24 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[org.clojure/clojure "1.9.0"]
+  [org.clojure/clojurescript "1.10.439"]
+  [org.clojure/core.async  "0.4.490"]
+  [binaryage/devtools "0.9.10"]
+  [reagent "0.8.1"]
+  [re-frame "0.10.6"]
+  [com.andrewmcveigh/cljs-time "0.5.2"]]
+
+ :builds
+ {:dev
+  {:target :browser
+   :modules {:main {:init-fn jetlag.core/mount-root}}
+   :devtools
+   {:after-load jetlag.core/on-js-reload
+    :http-root "public"
+    :http-port 3449
+    :preloads [devtools.preload]}}}}
